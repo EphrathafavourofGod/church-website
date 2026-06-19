@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testimonies & Prayer Requests - Ephratha Ministry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        .header {
+            background: darkred;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .menu {
+            background: #222;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .menu a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .section {
+            background: white;
+            margin: 20px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        input, textarea, select {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            height: 120px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: darkred;
+            color: white;
+            padding: 14px 22px;
+            margin-top: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #5e0101;
+        }
+
+        .box {
+            background: #f9f9f9;
+            padding: 18px;
+            margin-top: 15px;
+            border-radius: 10px;
+            border-left: 5px solid darkred;
+            text-align: left;
+        }
+
+        .title {
+            color: darkred;
+        }
+
+        .sticky {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background: green;
+            padding: 14px 18px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Testimonies & Prayer Requests</h1>
+</div>
+
+<div class="menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="sermons.html">Sermons</a>
+    <a href="give.html">Give</a>
+    <a href="testimony.html">Testimonies</a>
+</div>
+
+<div class="container">
+
+<!-- TESTIMONY -->
+<div class="section">
+    <h2 class="title">Share Your Testimony</h2>
+
+    <input type="text" id="tname" placeholder="Your Name">
+    <textarea id="ttestimony" placeholder="Write your testimony here..."></textarea>
+
+    <button class="btn" onclick="sendTestimony()">Send Testimony</button>
+
+    <p id="tmsg"></p>
+</div>
+
+<!-- PRAYER REQUEST -->
+<div class="section">
+    <h2 class="title">Submit Prayer Request</h2>
+
+    <input type="text" id="pname" placeholder="Your Name">
+    <textarea id="prayer" placeholder="Write your prayer request..."></textarea>
+
+    <button class="btn" onclick="sendPrayer()">Send Prayer Request</button>
+
+    <p id="pmsg"></p>
+</div>
+
+<!-- DISPLAY AREA (STATIC FOR NOW) -->
+<div class="section">
+    <h2 class="title">Recent Testimonies</h2>
+
+    <div class="box">
+        <p><b>John:</b> God healed my sickness after prayer.</p>
+    </div>
+
+    <div class="box">
+        <p><b>Mary:</b> I got a job after joining the ministry prayers.</p>
+    </div>
+</div>
+
+</div>
+
+<!-- WHATSAPP FLOAT BUTTON -->
+<a class="sticky" id="waLink" target="_blank">
+    WhatsApp Prayer
+</a>
+
+<script>
+function sendTestimony() {
+    let name = document.getElementById("tname").value;
+    let text = document.getElementById("ttestimony").value;
+
+    if(name === "" || text === "") {
+        document.getElementById("tmsg").innerText = "Please fill all fields.";
+        return;
+    }
+
+    let message =
+        "Testimony from Ephratha Ministry%0A%0A" +
+        "Name: " + name + "%0A" +
+        "Testimony: " + text;
+
+    document.getElementById("waLink").href =
+        "https://wa.me/254720327266?text=" + message;
+
+    document.getElementById("tmsg").innerText =
+        "Click WhatsApp button to send testimony.";
+}
+
+function sendPrayer() {
+    let name = document.getElementById("pname").value;
+    let text = document.getElementById("prayer").value;
+
+    if(name === "" || text === "") {
+        document.getElementById("pmsg").innerText = "Please fill all fields.";
+        return;
+    }
+
+    let message =
+        "Prayer Request from Ephratha Ministry%0A%0A" +
+        "Name: " + name + "%0A" +
+        "Request: " + text;
+
+    document.getElementById("waLink").href =
+        "https://wa.me/254720327266?text=" + message;
+
+    document.getElementById("pmsg").innerText =
+        "Click WhatsApp button to send prayer request.";
+}
+</script>
+
+</body>
+</html>
