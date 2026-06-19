@@ -12,60 +12,102 @@ body {
     background: #f4f4f4;
 }
 
-/* HEADER */
+/* PREMIUM HEADER */
 .header {
-    background: rgb(23, 0, 139);
+    background: linear-gradient(135deg, #1a008b, #0a003d);
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
 }
 
 .header h1 {
-    margin: 5px;
-    font-size: 24px;
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: 1px;
 }
 
-/* MENU */
+/* GLASS NAVBAR */
 .menu {
-    background: #000;
-    text-align: center;
-    padding: 12px;
     position: sticky;
     top: 0;
     z-index: 1000;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    padding: 12px;
 }
 
 .menu a {
     color: white;
     text-decoration: none;
-    margin: 0 12px;
-    font-size: 15px;
+    margin: 6px 12px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: 0.3s;
 }
 
-/* HERO */
+.menu a:hover {
+    background: darkred;
+}
+
+/* HERO PREMIUM */
 .hero {
-    height: 65vh;
+    height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
+
+    background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)),
     url('https://images.unsplash.com/photo-1507692049790-de58290a4334') center/cover no-repeat;
+
+    animation: fadeIn 2s ease-in-out;
 }
 
-.hero-content {
-    max-width: 800px;
-    padding: 20px;
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(1.05); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .hero h1 {
-    font-size: 32px;
+    font-size: 34px;
 }
 
 .hero p {
     font-size: 16px;
     opacity: 0.9;
+}
+
+/* SECTION GRID */
+.section-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.info-box {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+}
+
+.info-box h3 {
+    color: darkred;
 }
 
 /* BUTTON */
@@ -80,48 +122,38 @@ body {
     font-weight: bold;
 }
 
-/* GRID BOXES */
-.section-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 0 15px;
+.btn:hover {
+    background: #a30000;
 }
 
-.info-box {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-.info-box h3 {
-    color: darkred;
+/* FLOATING WHATSAPP BUTTON */
+.floating {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    background: #25D366;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
 /* FOOTER */
 .footer {
-    background: #660101;
+    background: #111;
     color: white;
     text-align: center;
-    padding: 12px;
-    margin-top: 20px;
+    padding: 15px;
 }
 
-/* MOBILE RESPONSIVE */
+/* MOBILE */
 @media (max-width: 768px) {
 
-    .menu a {
-        display: block;
-        margin: 8px 0;
-    }
-
-    .hero {
-        height: 55vh;
-        padding: 10px;
+    .menu {
+        flex-direction: column;
+        text-align: center;
     }
 
     .hero h1 {
@@ -131,10 +163,6 @@ body {
     .section-grid {
         grid-template-columns: 1fr;
     }
-
-    .header h1 {
-        font-size: 18px;
-    }
 }
 
 </style>
@@ -142,12 +170,10 @@ body {
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
     <h1>EPHRATHA FAVOUR OF GOD WORLD MINISTRIES</h1>
 </div>
 
-<!-- MENU -->
 <div class="menu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -158,21 +184,18 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-    <div class="hero-content">
+    <div>
         <h1>Welcome to Ephratha Ministry</h1>
         <p>Encounter God • Transformation • Divine Favour</p>
     </div>
 </div>
 
-<!-- BOXES -->
+<!-- PREMIUM GRID -->
 <div class="section-grid">
 
     <div class="info-box">
         <h3>About Our Ministry</h3>
-        <p>
-            We are a Christ-centered ministry committed to teaching the Word
-            and raising disciples for nations.
-        </p>
+        <p>We are a Christ-centered ministry committed to teaching the Word and raising disciples for nations.</p>
     </div>
 
     <div class="info-box">
@@ -198,6 +221,11 @@ body {
 <div class="footer">
     <p>© 2026 Ephratha Favour of God World Ministries</p>
 </div>
+
+<!-- FLOATING BUTTON -->
+<a class="floating" href="https://wa.me/254720994649" target="_blank">
+    💬 Prayer
+</a>
 
 </body>
 </html>
